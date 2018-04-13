@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: business
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: lunbatis
+Implementation-Vendor-Id: com
+Build-Jdk: 1.8.0_144
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/whatbeeryoulike/business
+Created-By: Maven Integration for Eclipse
+
