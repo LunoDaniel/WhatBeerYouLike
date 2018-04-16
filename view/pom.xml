@@ -11,6 +11,11 @@
 	<artifactId>view</artifactId>
 	<packaging>jar</packaging>
 
+	<properties>
+		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect>2.2.2</thymeleaf-layout-dialect>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<artifactId>domain</artifactId>
@@ -32,4 +37,5 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 	</dependencies>
+	<groupId>com.whatbeeryoulike</groupId>
 </project>

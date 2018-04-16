@@ -17,4 +17,5 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 	</dependencies>
+	<groupId>com.whatbeeryoulike</groupId>
 </project>
