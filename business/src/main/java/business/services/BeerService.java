@@ -7,38 +7,32 @@ import org.springframework.stereotype.Service;
 
 import business.services.interfaces.IBeerService;
 import domain.entities.Beer;
-import repository.interfaces.IBeerRepository;
+import repository.repositories.Beers;
 
 @Service
 public class BeerService implements IBeerService {
 	
-	
-	
 	@Autowired
-	private IBeerRepository beerRepository;
+	private Beers beerRepository;
 
 	@Override
 	public Beer addBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		return null;
+		return beerRepository.saveAndFlush(beer);
 	}
 
 	@Override
 	public void removeBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		
+		beerRepository.delete(beer);
 	}
 
 	@Override
 	public Beer updateBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		return null;
+		return beerRepository.save(beer);
 	}
 
 	@Override
 	public List<Beer> listAllBeer() {
-		// TODO Auto-generated method stub
-		return null;
+		return beerRepository.findAll();
 	}
 
 }
