@@ -2,6 +2,7 @@ package domain.entities;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -49,7 +51,8 @@ public class Beer {
 	}
 
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = City.class)
+	@ManyToOne
+	@JoinColumn(name="city_id")
 	public City getOriginCity() {
 		return originCity;
 	}
@@ -77,8 +80,8 @@ public class Beer {
 	}
 
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "value")),
-			@AttributeOverride(name = "unity", column = @Column(name = "unity")) })
+	@AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "volume_value")),
+			@AttributeOverride(name = "unity", column = @Column(name = "volume_unity")) })
 	public Volume getVolume() {
 		return volume;
 	}
@@ -87,8 +90,7 @@ public class Beer {
 		this.volume = volume;
 	}
 
-	@Column(name = "type")
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class)
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class, cascade=CascadeType.ALL)
 	public BeerType getType() {
 		return type;
 	}

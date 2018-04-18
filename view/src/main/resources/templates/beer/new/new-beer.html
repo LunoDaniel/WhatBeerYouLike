@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>What Beer You Like</title>
+<title>What Beer You Like</title>
 
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/beer/new-beer.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/beer/new-beer.css}" />
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
@@ -23,19 +25,20 @@
 
 <body>
 	<div class="aw-layout-page">
-		<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference" id="main-navbar">
+		<nav
+			class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference"
+			id="main-navbar">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand  hidden-xs" href="#">
-						<img alt="WhatBeerULike" th:src="@{/layout/images/logo.png}" class="img-logo"/>
+					<a class="navbar-brand  hidden-xs" href="#"> <img
+						alt="WhatBeerULike" th:src="@{/layout/images/logo.png}"
+						class="img-logo" />
 					</a>
 
 					<ul class="nav  navbar-nav">
-						<li>
-							<a href="#" class="js-sidebar-toggle">
-								<i class="fa  fa-bars"></i>
-							</a>
-						</li>
+						<li><a href="#" class="js-sidebar-toggle"> <i
+								class="fa  fa-bars"></i>
+						</a></li>
 					</ul>
 				</div>
 			</div>
@@ -47,19 +50,12 @@
 				<nav class="aw-menu  js-menu">
 					<ul class="aw-menu__list">
 
-						<li class="aw-menu__item">
-							<a href="new-beer.html">
-								<i class="fa  fa-fw  fa-plus-square"></i>
-
-								<span>Cadastrar Cerveja</span>
-							</a>
-
-							<a href="beer-list.html">
-								<i class="fa  fa-fw  fa-table"></i>
-
-								<span>Listar Cervejas</span>
-							</a>
-						</li>
+						<li class="aw-menu__item"><a th:href="@{new}"> <i
+								class="fa  fa-fw  fa-plus-square"></i> <span>Cadastrar
+									Cerveja</span>
+						</a> <a th:href="@{list}"> <i class="fa  fa-fw  fa-table"></i> <span>Listar
+									Cervejas</span>
+						</a></li>
 					</ul>
 				</nav>
 
@@ -71,17 +67,14 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-8">
-							<h1>
-								Cadastrar Cerveja
-							</h1>
+							<h1>Cadastrar Cerveja</h1>
 						</div>
 
 						<div class="col-xs-4">
 							<div class="aw-page-header-controls">
-								<a class="btn btn-primary" href="beer-list.html">
-									<i class="fa fa-table"></i>
-
-									<span class="hidden-xs hidden-sm">Listar Cervejas</span>
+								<a class="btn btn-primary" th:href="@{list}"> <i
+									class="fa fa-table"></i> <span class="hidden-xs hidden-sm">Listar
+										Cervejas</span>
 								</a>
 							</div>
 						</div>
@@ -91,49 +84,48 @@
 
 			<div class="container-fluid">
 				<div class="alert  alert-success">
-					<i class="fa fa-check-circle"></i>
-
-					<span>Mensagem sucesso!</span>
+					<i class="fa fa-check-circle"></i> <span>Mensagem sucesso!</span>
 				</div>
 
-                <div class="alert  alert-danger  alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<div class="alert  alert-danger  alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 
 					<div>
-						<i class="fa fa-exclamation-circle"></i>
-						
-						<span>Mensagem erro.</span>
+						<i class="fa fa-exclamation-circle"></i> <span>Mensagem
+							erro.</span>
 					</div>
 				</div>
 
-				<form method="POST" class="form-vertical  js-form-loading" 
+				<form method="POST" class="form-vertical  js-form-loading"
 					th:action="@{/beers/new}" th:object="${beer}">
 					<div class="form-group">
-						<label for="nome">Nome</label>
-
-						<input id="name" type="text" class="form-control"
-							th:field="*{name}" />
+						<label for="nome">Nome</label> <input id="name" type="text"
+							class="form-control" th:field="*{name}" />
 					</div>
 
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="tipo">Tipo</label>
-
-								<select id="tipo" class="form-control">
+								<label for="tipo">Tipo</label> <select id="tipo"
+									class="form-control">
 									<option value="">Selecione o tipo</option>
 									<option>Opção 1</option>
 								</select>
 							</div>
 						</div>
 
+						<div class="form-group">
+							<label for="nome">ABV</label> <input id="name" type="text"
+								class="form-control" th:field="*{abv}" />
+						</div>
+
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="valor">Valor</label>
-								
-								<input id="valor" type="text" class="form-control js-moeda" />
+								<label for="valor">Valor</label> <input id="valor" type="text"
+									class="form-control js-moeda" th:field="*{price}" />
 							</div>
 						</div>
 					</div>
@@ -147,7 +139,8 @@
 
 		<footer class="aw-layout-footer  js-content">
 			<div class="container-fluid">
-				<span class="aw-footer-disclaimer">&copy; 2017 WhatBeerYouLike. Todos os direitos reservados.</span>
+				<span class="aw-footer-disclaimer">&copy; 2017
+					WhatBeerYouLike. Todos os direitos reservados.</span>
 			</div>
 		</footer>
 	</div>
@@ -157,7 +150,9 @@
 	<script th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
 
 	<script>
-		jQuery('.js-moeda').mask("#.##0,00", { reverse: true });
+		jQuery('.js-moeda').mask("#.##0,00", {
+			reverse : true
+		});
 	</script>
 </body>
 </html>
