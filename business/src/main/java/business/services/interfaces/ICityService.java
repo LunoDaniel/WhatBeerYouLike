@@ -11,4 +11,6 @@ public interface ICityService {
 	public void removeCity(City city);
 	public City updateCity(City city);
 	public List<City> listAllCity();
+	public List<City> findAllGroupByName();
+	public City findCityById(Long id);
 }

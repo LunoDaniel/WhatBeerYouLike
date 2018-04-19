@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tb_beer_type")
@@ -27,7 +28,8 @@ public class BeerType {
 		this.id = id;
 	}
 
-	@Column(name = "name_type")
+	@NotBlank
+	@Column(name = "name_type", unique=true)
 	public String getNameType() {
 		return nameType;
 	}

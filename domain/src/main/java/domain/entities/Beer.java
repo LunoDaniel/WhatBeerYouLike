@@ -1,5 +1,7 @@
 package domain.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
@@ -16,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import domain.enums.Storage;
 
 @Entity
@@ -29,7 +33,7 @@ public class Beer {
 	private Storage storageMode;
 	private Volume volume;
 	private BeerType type;
-	private Double price;
+	private BigDecimal price;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +45,7 @@ public class Beer {
 		this.id = id;
 	}
 
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	public String getName() {
 		return name;
 	}
@@ -52,7 +56,7 @@ public class Beer {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="city_id")
+	@JoinColumn(name = "city_id")
 	public City getOriginCity() {
 		return originCity;
 	}
@@ -90,7 +94,8 @@ public class Beer {
 		this.volume = volume;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class, cascade=CascadeType.ALL)
+	@NotNull
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class, cascade = CascadeType.ALL)
 	public BeerType getType() {
 		return type;
 	}
@@ -99,12 +104,14 @@ public class Beer {
 		this.type = type;
 	}
 
+	@NotNull
+	@NumberFormat(pattern = "#,##0.00")
 	@Column(name = "price")
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

@@ -35,4 +35,14 @@ public class CityService implements ICityService {
 		return citiesReposistory.findAll();
 	}
 
+	@Override
+	public List<City> findAllGroupByName() {
+		return citiesReposistory.findAllGroupByName();
+	}
+
+	@Override
+	public City findCityById(Long id) {
+		return citiesReposistory.findCityById(id);
+	}
+
 }

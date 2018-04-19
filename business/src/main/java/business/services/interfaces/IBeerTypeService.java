@@ -10,4 +10,6 @@ public interface IBeerTypeService {
 	public void removeBeerType(BeerType beerType);
 	public BeerType updateBeerType(BeerType beerType);
 	public List<BeerType> listAllBeerType();
+	public List<BeerType> findAllGroupedByNameType();
+	public BeerType findTypeBeerById(Long typeBeerId);
 }

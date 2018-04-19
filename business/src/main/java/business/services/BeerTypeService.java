@@ -35,4 +35,14 @@ public class BeerTypeService implements IBeerTypeService{
 		return beerTypeRepository.findAll();
 	}
 
+	@Override
+	public List<BeerType> findAllGroupedByNameType() {
+		return beerTypeRepository.findAllGroupByNameType();
+	}
+	
+	@Override
+	public BeerType findTypeBeerById(Long typeBeerId) {
+		return beerTypeRepository.findTypeBeerById(typeBeerId);
+	}
+
 }
