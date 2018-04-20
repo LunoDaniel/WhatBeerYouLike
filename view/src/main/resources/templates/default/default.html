@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Layout page</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/beer/new-beer.css}" />
+</head>
+<body>
+	<header>
+	</header>
+	
+	<section layout:fragment="content">
+	
+	</section>
+	
+
+	<footer class="aw-layout-footer  js-content">
+		<div layout:fragment="custom-footer" class="container-fluid">
+			<span class="aw-footer-disclaimer" th:text="'&copy;   '+ ${#dates.format(#dates.createNow(), 'yyyy')} + ' WhatBeerYouLike. Todos os direitos reservados.'"> 
+				</span>
+		</div>
+	</footer>
+	
+	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
+	<script th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
+
+	<script>
+		jQuery('.js-moeda').mask("#.##0,00", {
+			reverse : true
+		});
+	</script>
+</body>
+</html>

@@ -21,6 +21,7 @@ import domain.entities.Beer;
 import domain.entities.BeerType;
 import domain.entities.City;
 
+
 @Controller
 @RequestMapping("/beers")
 public class BeerController {
