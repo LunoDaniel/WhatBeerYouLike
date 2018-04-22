@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>List of All Beers Type</h1>
+	<table>
+		<th:block >
+			<tr th:each="beerType : ${beerTypes}">
+				<td th:text="${beerType.nameType}">...</td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>

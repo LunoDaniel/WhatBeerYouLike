@@ -7,45 +7,9 @@
 </head>
 
 <body>
-	<section layout:fragment="content">
+	<section layout:fragment="content-page">
 		<div class="aw-layout-page">
-			<nav
-				class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference"
-				id="main-navbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand  hidden-xs" href="#"> <img
-							alt="WhatBeerULike" th:src="@{/layout/images/logo.png}"
-							class="img-logo" />
-						</a>
-	
-						<ul class="nav  navbar-nav">
-							<li><a href="#" class="js-sidebar-toggle"> <i
-									class="fa  fa-bars"></i>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-	
-			<aside class="aw-layout-sidebar  js-sidebar">
-				<div class="aw-layout-sidebar__content">
-	
-					<nav class="aw-menu  js-menu">
-						<ul class="aw-menu__list">
-	
-							<li class="aw-menu__item"><a th:href="@{new}"> <i
-									class="fa  fa-fw  fa-plus-square"></i> <span>Cadastrar
-										Cerveja</span>
-							</a> <a th:href="@{list}"> <i class="fa  fa-fw  fa-table"></i> <span>Listar
-										Cervejas</span>
-							</a></li>
-						</ul>
-					</nav>
-	
-				</div>
-			</aside>
-	
+			
 			<section class="aw-layout-content  js-content">
 				<div class="page-header">
 					<div class="container-fluid">
@@ -69,7 +33,7 @@
 				<div class="container-fluid">
 	
 					<form method="POST" class="form-vertical  js-form-loading"
-						th:action="@{/beers/new}" th:object="${beer}">
+						th:action="@{/beer/new}" th:object="${beer}">
 						
 						<div class="alert  alert-success" th:if="${!#strings.isEmpty(message)}">
 							<i class="fa fa-check-circle"></i> 
@@ -98,20 +62,20 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="tipo">Tipo</label> 
-									<select id="tipo" th:value="${beer.type}"
+									<select id="tipo" th:field="*{type}"
 										th:objec="${beersType}" class="form-control">
 										<option value="">Selecione o tipo</option>
 										<option th:each="type : ${beersType}"  
-											th:value="${type}" th:text="${type.nameType}"></option>
+											th:value="${type.id}" th:text="${type.nameType}"></option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="city">Cidade</label> 
-									<select id="city"
+									<select id="city" th:field="*{originCity}"
 										th:objec="${cities}" class="form-control">
 										<option value="">Selecione a cidade</option>
 										<option th:each="city : ${cities}"  
-											th:value="${city}" th:text="${city.name}"></option>
+											th:value="${city.id}" th:text="${city.name}"></option>
 									</select>
 								</div>
 								

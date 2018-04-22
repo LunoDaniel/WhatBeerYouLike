@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +22,8 @@ import domain.entities.Beer;
 import domain.entities.BeerType;
 import domain.entities.City;
 
-
 @Controller
-@RequestMapping("/beers")
+@RequestMapping("/beer")
 public class BeerController {
 
 	@Autowired
@@ -64,8 +64,7 @@ public class BeerController {
 	}
 
 	@PostMapping("/new")
-	public ModelAndView saveNewBeer(@PathParam(value = "beer") Beer beer, BindingResult result,
-			RedirectAttributes attributes) {
+	public ModelAndView saveNewBeer(@PathParam(value = "beer") Beer beer, BindingResult result, RedirectAttributes attributes) {
 
 		boolean isCityNull = beer.getOriginCity() != null;
 		boolean isTypeBeerNull = beer.getType().getId() != null;
@@ -83,10 +82,19 @@ public class BeerController {
 		}
 
 		beerService.addBeer(beer);
-		
+
 		attributes.addFlashAttribute("message", "Cerveja Salva com sucesso.");
 
 		return new ModelAndView("beer/search/beer-list");
+	}
+	
+	@DeleteMapping("/remove/{id}")
+	public String removeBeer(@PathVariable Long id, RedirectAttributes attributes) {
+		Beer beer = beerService.findOneBeer(id);
+		beerService.removeBeer(beer);
+		attributes.addFlashAttribute("message", "Cerveja Removida com sucesso.");
+		
+		return "redirect:/beer/list";
 	}
 
 	private BeerType insertNewTypeBeer(Long typeBeerId) {

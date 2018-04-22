@@ -2,67 +2,25 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{/default/default.html}">
+  	layout:decorate="~{/default/default.html}">
 <head>
-
-
-<title>What Beer You Like</title>
-
 </head>
-
 <body>
-	<section layout:fragment="content">
+	<section layout:fragment="content-page">
 		<div class="aw-layout-page">
-			<nav
-				class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference"
-				id="main-navbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand  hidden-xs" href="#"> <img
-							alt="WhatBeerULike" th:src="@{/layout/images/logo.png}"
-							class="img-logo" />
-						</a>
-	
-						<ul class="nav  navbar-nav">
-							<li><a href="#" class="js-sidebar-toggle"> <i
-									class="fa  fa-bars"></i>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-	
-			<aside class="aw-layout-sidebar  js-sidebar">
-				<div class="aw-layout-sidebar__content">
-	
-					<nav class="aw-menu  js-menu">
-						<ul class="aw-menu__list">
-	
-							<li class="aw-menu__item"><a th:href="@{new}"> <i
-									class="fa  fa-fw  fa-plus-square"></i> <span>Cadastrar
-										Cerveja</span>
-							</a> <a th:href="@{list}"> <i class="fa  fa-fw  fa-table"></i> <span>Listar
-										Cervejas</span>
-							</a></li>
-						</ul>
-					</nav>
-	
-				</div>
-			</aside>
-	
 			<section class="aw-layout-content  js-content">
 				<div class="page-header">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-xs-8">
-								<h1>Cadastrar Cerveja</h1>
+								<h1>Cadastrar Cidade de Origem da Cerveja</h1>
 							</div>
 	
 							<div class="col-xs-4">
 								<div class="aw-page-header-controls">
 									<a class="btn btn-primary" th:href="@{list}"> <i
 										class="fa fa-table"></i> <span class="hidden-xs hidden-sm">Listar
-											Cervejas</span>
+											Cidades</span>
 									</a>
 								</div>
 							</div>
@@ -73,7 +31,7 @@
 				<div class="container-fluid">
 	
 					<form method="POST" class="form-vertical  js-form-loading"
-						th:action="@{/beer-type/new}" th:object="${beerType}">
+						th:action="@{/beer-city/new}" th:object="${beerCity}">
 						
 						<div class="alert  alert-success" th:if="${!#strings.isEmpty(message)}">
 							<i class="fa fa-check-circle"></i> 
@@ -96,15 +54,15 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="typeName">Nome</label> 
-									<input id="typeName" type="text" th:value="${beerType.nameType}"
-										class="form-control" th:field="*{nameType}" />
+									<input id="typeName" type="text" th:value="${beerCity.name}"
+										class="form-control" th:field="*{name}" />
 								</div>
 	
 						
 								<div class="form-group">
-									<label for="descriptionType">Descrição</label> 
-									<input id="descriptionType" type="text" th:value="${beerType.descriptionType}"
-										class="form-control" th:field="*{descriptionType}" />
+									<label for="descriptionType">País</label> 
+									<input id="descriptionType" type="text" th:value="${beerCity.country}"
+										class="form-control" th:field="*{country}" />
 								</div>
 							</div>
 						</div>
