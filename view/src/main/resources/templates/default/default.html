@@ -15,9 +15,8 @@
 </head>
 <body>
 
-	<header> </header>
-	
-	<section layout:fragment="content-menu">
+	<!-- Menu de Navegao Top da Página -->
+	<header>
 		<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference"
 			id="main-navbar">
 			<div class="container-fluid">
@@ -37,30 +36,103 @@
 				</div>
 			</div>
 		</nav>
-		<aside class="aw-layout-sidebar  js-sidebar">
+	</header>
+	
+	<!-- Menu lateral responsivo -->
+	<div class="aw-layout-page">
+		<aside class="aw-layout-sidebar  js-sidebar" layout:fragment="content-side-menu">
 			<div class="aw-layout-sidebar__content">
 	
 				<nav class="aw-menu  js-menu">
 					<ul class="aw-menu__list">
 	
 						<li class="aw-menu__item">
-							<a th:href="@{new}"> 
-								<i class="fa  fa-fw  fa-plus-square"></i> 
-								<span>Cadastrar Cerveja</span>
-							</a> 
-							<a th:href="@{list}"> 
-								<i class="fa  fa-fw  fa-table"></i> 
-								<span>Listar Cervejas</span>
+							<a href="#">
+								<i class="aw-menu__navigation-icon  fa"></i>
+								<span>Cadastros</span>
 							</a>
+							<ul class="aw-menu__list aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer/new}"> 
+										<i class="fa  fa-fw  fa-beer"></i> 
+										<span>Cerveja</span>
+									</a>
+								</li>
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer-type/new}"> 
+										<i class="fa  fa-fw fa-tag"></i> 
+										<span>Tipo de Cerveja</span>
+									</a>
+								</li>
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer-city/new}"> 
+										<i class="fa  fa-fw  fa-map-marker"></i> 
+										<span>Cidade de Origem</span>
+									</a>
+								</li>
+							</ul>			
+						</li>
+						<li class="aw-menu__item">
+							<a href="#"> 
+								<i class="aw-menu__navigation-icon  fa"></i>
+								<span>Listar</span>
+							</a>
+							<ul class="aw-menu__list aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer/list}"> 
+										<i class="fa  fa-fw  fa-beer"></i> 
+										<span>Cerveja</span>
+									</a>
+								</li>
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer-type/list}"> 
+										<i class="fa  fa-fw fa-tag"></i> 
+										<span>Tipo de Cerveja</span>
+									</a>
+								</li>
+								<li class="aw-menu__item  aw-menu__item--link">
+									<a th:href="@{/beer-city/list}"> 
+										<i class="fa  fa-fw  fa-map-marker"></i> 
+										<span>Cidade de Origem</span>
+									</a>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</nav>
 	
 			</div>
 		</aside>
-	</section>
+		
+		<section layout:fragment="content-page"></section>
+	</div>
 	
-	<section layout:fragment="content-page"></section>
+	<!-- Modal de confirmação de Exclusão -->
+	<div class="confirm-delete-modal">
+		<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" 
+			aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="confireDeleteModalLabel">Remover</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        Deseja realmente remover?
+		      </div>
+		      <div class="modal-footer">
+		      	<form id="form-delete" method="POST" th:action="@{/beer/remove/}" >
+		      		<input type="hidden" name="_method" value="DELETE" />
+		        	<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+		        	<button type="submit" class="btn btn-danger">Apagar</button>
+		        </form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
 	
 	<footer class="aw-layout-footer  js-content">
 		<div layout:fragment="custom-footer" class="container-fluid">
@@ -73,7 +145,7 @@
 	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
 	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
 	<script th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
-	<script th:src="@{/layout/javascripts/beer/beer.js}"></script>
+	<script th:src="@{/layout/javascripts/whatbeeryoulike.js}"></script>
 	
 	<script>
 		jQuery('.js-moeda').mask("#.##0,00", {
