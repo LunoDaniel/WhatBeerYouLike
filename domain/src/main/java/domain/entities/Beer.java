@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -95,7 +94,7 @@ public class Beer {
 	}
 
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = BeerType.class)
 	public BeerType getType() {
 		return type;
 	}

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import business.exceptions.NotFoudBeerException;
+import business.exceptions.NotFoundBeerException;
 import business.services.interfaces.IBeerService;
 import domain.entities.Beer;
 import repository.repositories.Beers;
@@ -49,10 +49,10 @@ public class BeerService implements IBeerService {
 			if (optional.isPresent()) {
 				beer = optional.get();
 			} else {
-				throw new NotFoudBeerException("Error to find a Beer. :(");
+				throw new NotFoundBeerException("Error to find a Beer. :(");
 			}
 
-		} catch (NotFoudBeerException e) {
+		} catch (NotFoundBeerException e) {
 			logger.error(e.getMessage());
 		}
 

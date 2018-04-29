@@ -46,6 +46,7 @@ public class BeerTypeController {
 		try {			
 			beerTypeService.addBeerType(beerType);
 		} catch (Exception e) {
+			
 		}
 		
 		return new ModelAndView("beer/search/beer-type-list");

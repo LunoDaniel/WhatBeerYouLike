@@ -19,7 +19,7 @@
 
 						<div class="col-xs-4">
 							<div class="aw-page-header-controls">
-								<a class="btn btn-primary" href="cadastro-vinho.html">
+								<a class="btn btn-primary" th:href="@{new}">
 									<i class="fa fa-plus-square"></i>
 
 									<span class="hidden-xs hidden-sm">Cadastro de Cervejas</span>
@@ -64,7 +64,7 @@
 								<td class="text-right" th:text="${beer.originCity.name}">55,00</td>
 
 								<td class="text-center">
-									<button type="button" name="del" class="btn btn-danger btn-xs"  th:id="btn-delete" th:attr="beer-id=${beer.id}"
+									<button type="button" name="del" class="btn btn-danger btn-xs"  th:id="btn-delete" th:attr="item-id=${beer.id}"
 										data-toggle="modal" data-target="#confirmDeleteModal" >
 									  <span class="fa fa-trash" ></span>
 									</button>
@@ -77,28 +77,6 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
-			<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="confireDeleteModalLabel">Remover</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			        Deseja realmente remover esta Cerveja?
-			      </div>
-			      <div class="modal-footer">
-			      	<form id="form-delete" method="POST" th:action="@{/beer/remove/{id}(id=${beerId})}" >
-			      		<input type="hidden" name="_method" value="DELETE" />
-			        	<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-			        	<button type="submit" class="btn btn-danger">Apagar</button>
-			        </form>
-			      </div>
-			    </div>
-			  </div>
 			</div>
 		</section>
 		
